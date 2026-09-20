@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-13T22:28:38.950Z",
+  "generated_at": "2026-09-20T22:32:45.664Z",
   "source": "rulesets/source/routing-graph.js raw provider graph before Mihomo MRS normalization",
-  "mihomo_bin": "mihomo-v1.19.30",
+  "mihomo_bin": "mihomo-v1.19.31",
   "output_dir": "rulesets/generated/mihomo-mrs",
   "converted": [
     {
@@ -3178,13 +3178,13 @@
       "source_format": "text",
       "source_url": "https://ruleset.skk.moe/Clash/domainset/reject_phishing.txt",
       "type_counts": {
-        "domain": 146412
+        "domain": 144708
       },
       "generated": [
         {
           "behavior": "domain",
           "file": "sukka-phishing.mrs",
-          "entries": 146412
+          "entries": 144708
         }
       ]
     },

@@ -58,7 +58,7 @@ host-suffix, baidu
 host-suffix, anquan
 host-suffix, alipay
 host-suffix, jsjgbxg.com
-host-suffix, taoyougou.com
+host-suffix, cargai.com
 host-suffix, 027htxt.com
 host-suffix, 027hxzy.com
 host-suffix, 027hy.com
@@ -11085,7 +11085,7 @@ host-suffix, alu-ledprofile.com
 host-suffix, aluaa.com
 host-suffix, aluminiumchina.com
 host-suffix, aluntan.com
-host-suffix, jssihuan.com
+host-suffix, alwaysnb.com
 host-suffix, alwayzev.com
 host-suffix, alwindoor.com
 host-suffix, alxw.com
@@ -17905,7 +17905,7 @@ host-suffix, carellicpa.com
 host-suffix, carertec.com
 host-suffix, careuc.com
 host-suffix, carezb.com
-host-suffix, cargai.com
+host-suffix, jssia.org
 host-suffix, cargeer.com
 host-suffix, cargo001.com
 host-suffix, cargodiscovery.com
@@ -18556,7 +18556,7 @@ host-suffix, cded23c0b11011.beer
 host-suffix, cdedu.com
 host-suffix, cdeledu.com
 host-suffix, cdenvironment.com
-host-suffix, cdfanmu.com
+host-suffix, jssihuan.com
 host-suffix, cdfcjg.com
 host-suffix, cdfcn.com
 host-suffix, cdfeimi.com
@@ -51543,7 +51543,7 @@ host-suffix, jcnqqnf.com
 host-suffix, jcodecraeer.com
 host-suffix, jcorv.org
 host-suffix, jcpeixun.com
-host-suffix, jsshuntai.com
+host-suffix, jcpesz.com
 host-suffix, jcqzw.com
 host-suffix, jcrb.com
 host-suffix, jcrcw.com
@@ -54697,9 +54697,9 @@ host-suffix, jsshichuang.com
 host-suffix, jsshow.net
 host-suffix, jsshrzx.com
 host-suffix, jsshuangxin.com
-host-suffix, jcpesz.com
+host-suffix, lianqi.net
 host-suffix, 027hpit.com
-host-suffix, alwaysnb.com
+host-suffix, cdfanmu.com
 host-suffix, jssjchyxh.com
 host-suffix, jssjrfw.com
 host-suffix, jssjxgyw.com
@@ -59524,7 +59524,7 @@ host-suffix, lianok.com
 host-suffix, lianouyiyuan.com
 host-suffix, lianpingroup.com
 host-suffix, lianpunet.com
-host-suffix, lianqi.net
+host-suffix, jsshuntai.com
 host-suffix, lianqigong.com
 host-suffix, liansaipiao.com
 host-suffix, lianshang.com
@@ -85503,7 +85503,7 @@ host-suffix, taoxuemiao.com
 host-suffix, taoyaohh.site
 host-suffix, taoyitu.com
 host-suffix, taoyizhu.com
-host-suffix, jssia.org
+host-suffix, taoyougou.com
 host-suffix, taoyuanc.com
 host-suffix, taoyuewenhua.net
 host-suffix, taozg.store
@@ -109358,6 +109358,7 @@ host, scanservice1.qcpp1.net
 host, scene7-cdn.dell.com
 host, service.urchin.com
 host, si.cdn.dell.com
+host, sm.dell.com
 host, snp.cdn.dell.com
 host, snpi.dell.com
 host, staging-controlbe.floonet.goog
@@ -115947,6 +115948,7 @@ ip-cidr, 43.224.240.0/22, no-resolve
 ip-cidr, 43.225.76.0/22, no-resolve
 ip-cidr, 43.225.84.0/22, no-resolve
 ip-cidr, 43.225.120.0/22, no-resolve
+ip-cidr, 43.225.175.0/24, no-resolve
 ip-cidr, 43.225.180.0/22, no-resolve
 ip-cidr, 43.225.208.0/22, no-resolve
 ip-cidr, 43.225.216.0/21, no-resolve
@@ -116090,8 +116092,7 @@ ip-cidr, 43.243.244.0/22, no-resolve
 ip-cidr, 43.246.0.0/18, no-resolve
 ip-cidr, 43.246.64.0/19, no-resolve
 ip-cidr, 43.246.96.0/22, no-resolve
-ip-cidr, 43.246.112.0/24, no-resolve
-ip-cidr, 43.246.114.0/23, no-resolve
+ip-cidr, 43.246.112.0/22, no-resolve
 ip-cidr, 43.246.228.0/22, no-resolve
 ip-cidr, 43.247.4.0/22, no-resolve
 ip-cidr, 43.247.8.0/22, no-resolve
@@ -116495,7 +116496,7 @@ ip-cidr, 58.24.0.0/15, no-resolve
 ip-cidr, 58.30.0.0/15, no-resolve
 ip-cidr, 58.32.0.0/11, no-resolve
 ip-cidr, 58.65.232.0/21, no-resolve
-ip-cidr, 58.66.0.0/15, no-resolve
+ip-cidr, 58.67.128.0/17, no-resolve
 ip-cidr, 58.68.224.0/19, no-resolve
 ip-cidr, 58.82.0.0/17, no-resolve
 ip-cidr, 58.83.0.0/16, no-resolve
@@ -116518,7 +116519,9 @@ ip-cidr, 59.83.160.0/20, no-resolve
 ip-cidr, 59.83.192.0/19, no-resolve
 ip-cidr, 59.83.224.0/21, no-resolve
 ip-cidr, 59.83.232.0/22, no-resolve
-ip-cidr, 59.107.0.0/16, no-resolve
+ip-cidr, 59.107.0.0/17, no-resolve
+ip-cidr, 59.107.226.0/24, no-resolve
+ip-cidr, 59.107.255.0/24, no-resolve
 ip-cidr, 59.108.0.0/14, no-resolve
 ip-cidr, 59.151.0.0/17, no-resolve
 ip-cidr, 59.152.16.0/20, no-resolve
@@ -116723,7 +116726,6 @@ ip-cidr, 101.237.0.0/17, no-resolve
 ip-cidr, 101.237.128.0/18, no-resolve
 ip-cidr, 101.237.192.0/19, no-resolve
 ip-cidr, 101.237.224.0/22, no-resolve
-ip-cidr, 101.237.228.0/24, no-resolve
 ip-cidr, 101.237.230.0/23, no-resolve
 ip-cidr, 101.237.243.0/24, no-resolve
 ip-cidr, 101.237.244.0/23, no-resolve
@@ -116931,7 +116933,7 @@ ip-cidr, 103.35.48.0/22, no-resolve
 ip-cidr, 103.35.104.0/22, no-resolve
 ip-cidr, 103.35.117.0/24, no-resolve
 ip-cidr, 103.35.119.0/24, no-resolve
-ip-cidr, 103.35.180.0/23, no-resolve
+ip-cidr, 103.35.180.0/22, no-resolve
 ip-cidr, 103.35.220.0/22, no-resolve
 ip-cidr, 103.36.28.0/22, no-resolve
 ip-cidr, 103.36.36.0/22, no-resolve
@@ -118198,7 +118200,9 @@ ip-cidr, 103.218.8.0/21, no-resolve
 ip-cidr, 103.218.16.0/21, no-resolve
 ip-cidr, 103.218.28.0/22, no-resolve
 ip-cidr, 103.218.32.0/19, no-resolve
-ip-cidr, 103.218.64.0/19, no-resolve
+ip-cidr, 103.218.64.0/20, no-resolve
+ip-cidr, 103.218.80.0/21, no-resolve
+ip-cidr, 103.218.88.0/22, no-resolve
 ip-cidr, 103.218.178.0/23, no-resolve
 ip-cidr, 103.218.192.0/20, no-resolve
 ip-cidr, 103.218.208.0/21, no-resolve
@@ -118564,7 +118568,16 @@ ip-cidr, 109.244.0.0/16, no-resolve
 ip-cidr, 110.6.0.0/15, no-resolve
 ip-cidr, 110.16.0.0/14, no-resolve
 ip-cidr, 110.34.40.0/21, no-resolve
-ip-cidr, 110.40.0.0/14, no-resolve
+ip-cidr, 110.40.0.0/15, no-resolve
+ip-cidr, 110.42.0.0/20, no-resolve
+ip-cidr, 110.42.16.0/24, no-resolve
+ip-cidr, 110.42.18.0/23, no-resolve
+ip-cidr, 110.42.20.0/22, no-resolve
+ip-cidr, 110.42.24.0/21, no-resolve
+ip-cidr, 110.42.32.0/19, no-resolve
+ip-cidr, 110.42.64.0/18, no-resolve
+ip-cidr, 110.42.128.0/17, no-resolve
+ip-cidr, 110.43.0.0/16, no-resolve
 ip-cidr, 110.44.12.0/22, no-resolve
 ip-cidr, 110.44.144.0/20, no-resolve
 ip-cidr, 110.48.0.0/16, no-resolve
@@ -118843,10 +118856,11 @@ ip-cidr, 114.112.224.0/22, no-resolve
 ip-cidr, 114.112.228.0/24, no-resolve
 ip-cidr, 114.112.230.0/23, no-resolve
 ip-cidr, 114.112.234.0/23, no-resolve
-ip-cidr, 114.112.240.0/21, no-resolve
+ip-cidr, 114.112.240.0/23, no-resolve
+ip-cidr, 114.112.245.0/24, no-resolve
+ip-cidr, 114.112.247.0/24, no-resolve
 ip-cidr, 114.112.248.0/22, no-resolve
 ip-cidr, 114.112.252.0/23, no-resolve
-ip-cidr, 114.112.255.0/24, no-resolve
 ip-cidr, 114.113.0.0/17, no-resolve
 ip-cidr, 114.113.128.0/21, no-resolve
 ip-cidr, 114.113.140.0/22, no-resolve
@@ -119370,6 +119384,7 @@ ip-cidr, 123.49.232.0/22, no-resolve
 ip-cidr, 123.49.236.0/24, no-resolve
 ip-cidr, 123.49.240.0/24, no-resolve
 ip-cidr, 123.49.242.0/23, no-resolve
+ip-cidr, 123.49.245.0/24, no-resolve
 ip-cidr, 123.49.248.0/21, no-resolve
 ip-cidr, 123.50.160.0/19, no-resolve
 ip-cidr, 123.52.0.0/14, no-resolve
@@ -119473,7 +119488,15 @@ ip-cidr, 124.150.137.0/24, no-resolve
 ip-cidr, 124.151.0.0/16, no-resolve
 ip-cidr, 124.152.0.0/16, no-resolve
 ip-cidr, 124.160.0.0/13, no-resolve
-ip-cidr, 124.172.0.0/14, no-resolve
+ip-cidr, 124.172.87.0/24, no-resolve
+ip-cidr, 124.172.88.0/23, no-resolve
+ip-cidr, 124.172.91.0/24, no-resolve
+ip-cidr, 124.172.93.0/24, no-resolve
+ip-cidr, 124.172.128.0/17, no-resolve
+ip-cidr, 124.173.64.0/18, no-resolve
+ip-cidr, 124.173.128.0/18, no-resolve
+ip-cidr, 124.173.205.0/24, no-resolve
+ip-cidr, 124.174.0.0/15, no-resolve
 ip-cidr, 124.192.0.0/15, no-resolve
 ip-cidr, 124.196.0.0/16, no-resolve
 ip-cidr, 124.197.56.0/21, no-resolve
@@ -119620,7 +119643,12 @@ ip-cidr, 140.246.0.0/16, no-resolve
 ip-cidr, 140.249.0.0/16, no-resolve
 ip-cidr, 140.250.0.0/16, no-resolve
 ip-cidr, 140.255.0.0/16, no-resolve
-ip-cidr, 142.86.192.0/18, no-resolve
+ip-cidr, 142.86.192.0/19, no-resolve
+ip-cidr, 142.86.224.0/20, no-resolve
+ip-cidr, 142.86.240.0/21, no-resolve
+ip-cidr, 142.86.248.0/22, no-resolve
+ip-cidr, 142.86.253.0/24, no-resolve
+ip-cidr, 142.86.254.0/23, no-resolve
 ip-cidr, 143.64.0.0/16, no-resolve
 ip-cidr, 144.0.0.0/16, no-resolve
 ip-cidr, 144.7.0.0/16, no-resolve
@@ -121866,15 +121894,19 @@ ip-cidr, 223.255.252.0/23, no-resolve
 ip6-cidr, 2001:250::/30, no-resolve
 ip6-cidr, 2001:254::/33, no-resolve
 ip6-cidr, 2001:255::/32, no-resolve
+ip6-cidr, 2001:256::/32, no-resolve
+ip6-cidr, 2001:678:12b8::/48, no-resolve
+ip6-cidr, 2001:678:12c4::/48, no-resolve
+ip6-cidr, 2001:678:12cc::/48, no-resolve
+ip6-cidr, 2001:67c:a1c::/48, no-resolve
+ip6-cidr, 2001:67c:ebc::/48, no-resolve
+ip6-cidr, 2001:67c:2c1c::/48, no-resolve
 ip6-cidr, 2001:7fa:5::/48, no-resolve
+ip6-cidr, 2001:7fa:10::/48, no-resolve
 ip6-cidr, 2001:c68::/32, no-resolve
 ip6-cidr, 2001:cc0::/32, no-resolve
-ip6-cidr, 2001:da8::/32, no-resolve
-ip6-cidr, 2001:daa:1::/48, no-resolve
-ip6-cidr, 2001:daa:2::/47, no-resolve
-ip6-cidr, 2001:daa:4::/47, no-resolve
-ip6-cidr, 2001:daa:6::/48, no-resolve
-ip6-cidr, 2001:daa:9::/48, no-resolve
+ip6-cidr, 2001:da8::/31, no-resolve
+ip6-cidr, 2001:daa::/32, no-resolve
 ip6-cidr, 2001:dc7::/45, no-resolve
 ip6-cidr, 2001:dc7:9::/48, no-resolve
 ip6-cidr, 2001:dc7:a::/47, no-resolve
@@ -121892,10 +121924,64 @@ ip6-cidr, 2001:dc7:2000::/35, no-resolve
 ip6-cidr, 2001:dc7:4000::/34, no-resolve
 ip6-cidr, 2001:dc7:8000::/33, no-resolve
 ip6-cidr, 2001:dd8:1::/48, no-resolve
+ip6-cidr, 2001:dd8:5::/48, no-resolve
 ip6-cidr, 2001:dd9::/48, no-resolve
-ip6-cidr, 2001:4510:400::/40, no-resolve
-ip6-cidr, 2001:4510:1480::/41, no-resolve
-ip6-cidr, 2001:4511:1480::/41, no-resolve
+ip6-cidr, 2001:df0:423::/48, no-resolve
+ip6-cidr, 2001:df0:9c0::/48, no-resolve
+ip6-cidr, 2001:df0:1bc0::/48, no-resolve
+ip6-cidr, 2001:df0:25c0::/48, no-resolve
+ip6-cidr, 2001:df0:2e00::/48, no-resolve
+ip6-cidr, 2001:df0:2e80::/48, no-resolve
+ip6-cidr, 2001:df0:85c0::/48, no-resolve
+ip6-cidr, 2001:df0:9d40::/48, no-resolve
+ip6-cidr, 2001:df0:ac40::/48, no-resolve
+ip6-cidr, 2001:df0:bf80::/48, no-resolve
+ip6-cidr, 2001:df0:d880::/48, no-resolve
+ip6-cidr, 2001:df0:f8c0::/48, no-resolve
+ip6-cidr, 2001:df1:5280::/48, no-resolve
+ip6-cidr, 2001:df1:5b80::/48, no-resolve
+ip6-cidr, 2001:df1:6180::/48, no-resolve
+ip6-cidr, 2001:df1:d180::/48, no-resolve
+ip6-cidr, 2001:df1:f480::/48, no-resolve
+ip6-cidr, 2001:df2:5780::/48, no-resolve
+ip6-cidr, 2001:df2:8bc0::/48, no-resolve
+ip6-cidr, 2001:df2:a580::/48, no-resolve
+ip6-cidr, 2001:df2:c240::/48, no-resolve
+ip6-cidr, 2001:df2:d4c0::/48, no-resolve
+ip6-cidr, 2001:df3:15c0::/48, no-resolve
+ip6-cidr, 2001:df3:7440::/48, no-resolve
+ip6-cidr, 2001:df3:a680::/48, no-resolve
+ip6-cidr, 2001:df3:c680::/48, no-resolve
+ip6-cidr, 2001:df3:d0c0::/48, no-resolve
+ip6-cidr, 2001:df3:ef80::/48, no-resolve
+ip6-cidr, 2001:df4:1880::/48, no-resolve
+ip6-cidr, 2001:df4:2780::/48, no-resolve
+ip6-cidr, 2001:df4:2e80::/48, no-resolve
+ip6-cidr, 2001:df4:3d80::/48, no-resolve
+ip6-cidr, 2001:df4:4b80::/48, no-resolve
+ip6-cidr, 2001:df4:4d80::/48, no-resolve
+ip6-cidr, 2001:df4:c180::/48, no-resolve
+ip6-cidr, 2001:df4:c580::/48, no-resolve
+ip6-cidr, 2001:df4:e140::/48, no-resolve
+ip6-cidr, 2001:df4:e142::/47, no-resolve
+ip6-cidr, 2001:df5:2fc0::/48, no-resolve
+ip6-cidr, 2001:df5:4cc0::/48, no-resolve
+ip6-cidr, 2001:df5:5f80::/48, no-resolve
+ip6-cidr, 2001:df5:7800::/48, no-resolve
+ip6-cidr, 2001:df6:100::/48, no-resolve
+ip6-cidr, 2001:df6:5d00::/48, no-resolve
+ip6-cidr, 2001:df6:6800::/48, no-resolve
+ip6-cidr, 2001:df6:f400::/48, no-resolve
+ip6-cidr, 2001:df7:2b80::/48, no-resolve
+ip6-cidr, 2001:df7:6600::/48, no-resolve
+ip6-cidr, 2001:e08::/32, no-resolve
+ip6-cidr, 2001:e18::/32, no-resolve
+ip6-cidr, 2001:e80::/32, no-resolve
+ip6-cidr, 2001:e88::/32, no-resolve
+ip6-cidr, 2001:f38::/32, no-resolve
+ip6-cidr, 2001:f88::/32, no-resolve
+ip6-cidr, 2001:4438::/32, no-resolve
+ip6-cidr, 2001:4510::/29, no-resolve
 ip6-cidr, 2400:1040::/32, no-resolve
 ip6-cidr, 2400:1160::/32, no-resolve
 ip6-cidr, 2400:12c0::/32, no-resolve
@@ -122341,7 +122427,18 @@ ip6-cidr, 2401:1ac0::/32, no-resolve
 ip6-cidr, 2401:1c60::/32, no-resolve
 ip6-cidr, 2401:1ce0::/32, no-resolve
 ip6-cidr, 2401:1d40::/32, no-resolve
-ip6-cidr, 2401:1da0::/32, no-resolve
+ip6-cidr, 2401:1da0::/43, no-resolve
+ip6-cidr, 2401:1da0:30::/44, no-resolve
+ip6-cidr, 2401:1da0:40::/42, no-resolve
+ip6-cidr, 2401:1da0:80::/41, no-resolve
+ip6-cidr, 2401:1da0:100::/40, no-resolve
+ip6-cidr, 2401:1da0:200::/39, no-resolve
+ip6-cidr, 2401:1da0:400::/38, no-resolve
+ip6-cidr, 2401:1da0:800::/37, no-resolve
+ip6-cidr, 2401:1da0:1000::/36, no-resolve
+ip6-cidr, 2401:1da0:2000::/35, no-resolve
+ip6-cidr, 2401:1da0:4000::/34, no-resolve
+ip6-cidr, 2401:1da0:8000::/33, no-resolve
 ip6-cidr, 2401:1dc0::/32, no-resolve
 ip6-cidr, 2401:1de0::/32, no-resolve
 ip6-cidr, 2401:1e00::/32, no-resolve
@@ -123788,13 +123885,7 @@ ip6-cidr, 2406:840:114::/46, no-resolve
 ip6-cidr, 2406:840:118::/45, no-resolve
 ip6-cidr, 2406:840:120::/43, no-resolve
 ip6-cidr, 2406:840:140::/42, no-resolve
-ip6-cidr, 2406:840:181::/48, no-resolve
-ip6-cidr, 2406:840:182::/47, no-resolve
-ip6-cidr, 2406:840:184::/46, no-resolve
-ip6-cidr, 2406:840:188::/45, no-resolve
-ip6-cidr, 2406:840:190::/44, no-resolve
-ip6-cidr, 2406:840:1a0::/43, no-resolve
-ip6-cidr, 2406:840:1c0::/42, no-resolve
+ip6-cidr, 2406:840:180::/41, no-resolve
 ip6-cidr, 2406:840:201::/48, no-resolve
 ip6-cidr, 2406:840:202::/47, no-resolve
 ip6-cidr, 2406:840:204::/46, no-resolve
@@ -124074,7 +124165,10 @@ ip6-cidr, 2406:840:9101::/48, no-resolve
 ip6-cidr, 2406:840:9103::/48, no-resolve
 ip6-cidr, 2406:840:9104::/46, no-resolve
 ip6-cidr, 2406:840:9108::/45, no-resolve
-ip6-cidr, 2406:840:9110::/44, no-resolve
+ip6-cidr, 2406:840:9111::/48, no-resolve
+ip6-cidr, 2406:840:9112::/47, no-resolve
+ip6-cidr, 2406:840:9114::/46, no-resolve
+ip6-cidr, 2406:840:9118::/45, no-resolve
 ip6-cidr, 2406:840:9120::/43, no-resolve
 ip6-cidr, 2406:840:9140::/43, no-resolve
 ip6-cidr, 2406:840:9160::/44, no-resolve
@@ -124278,6 +124372,7 @@ ip6-cidr, 2406:840:f0ab::/48, no-resolve
 ip6-cidr, 2406:840:f0ac::/46, no-resolve
 ip6-cidr, 2406:840:f0b0::/44, no-resolve
 ip6-cidr, 2406:840:f0c0::/42, no-resolve
+ip6-cidr, 2406:840:f101::/48, no-resolve
 ip6-cidr, 2406:840:f102::/47, no-resolve
 ip6-cidr, 2406:840:f104::/46, no-resolve
 ip6-cidr, 2406:840:f108::/45, no-resolve
@@ -124908,6 +125003,7 @@ ip6-cidr, 2408:4004::/30, no-resolve
 ip6-cidr, 2408:4008::/29, no-resolve
 ip6-cidr, 2408:4010::/30, no-resolve
 ip6-cidr, 2408:4014::/31, no-resolve
+ip6-cidr, 2408:4016:1::/48, no-resolve
 ip6-cidr, 2408:4016:2::/47, no-resolve
 ip6-cidr, 2408:4016:4::/46, no-resolve
 ip6-cidr, 2408:4016:8::/45, no-resolve
@@ -125073,6 +125169,7 @@ ip6-cidr, 2605:9d80:9033::/48, no-resolve
 ip6-cidr, 2605:9d80:9042::/48, no-resolve
 ip6-cidr, 2605:9d80:9071::/48, no-resolve
 ip6-cidr, 2605:9d80:9092::/48, no-resolve
+ip6-cidr, 2620:57:4004::/48, no-resolve
 ip6-cidr, 2804:1e48:9002::/48, no-resolve
 ip6-cidr, 2a03:f900::/29, no-resolve
 ip6-cidr, 2a04:3e00:1002::/48, no-resolve
@@ -125261,6 +125358,4 @@ ip6-cidr, 2c0f:f7a8:805f::/48, no-resolve
 ip6-cidr, 2c0f:f7a8:8150::/48, no-resolve
 ip6-cidr, 2c0f:f7a8:815f::/48, no-resolve
 ip6-cidr, 2c0f:f7a8:8211::/48, no-resolve
-ip6-cidr, 2c0f:f7a8:9020::/48, no-resolve
 ip6-cidr, 2c0f:f7a8:9041::/48, no-resolve
-ip6-cidr, 2c0f:f7a8:9220::/48, no-resolve
