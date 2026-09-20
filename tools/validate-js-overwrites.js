@@ -319,7 +319,20 @@ function makeFixtureConfig() {
         path: './ruleset/legacy.yaml',
       },
     },
-    dns: {},
+    dns: {
+      // Regression fixture for Issue #182: a client may feed back a legacy rule-mode
+      // entry while the overwrite later replaces the source rule-providers.
+      'fake-ip-filter-mode': 'rule',
+      'fake-ip-filter': [
+        '+.lan',
+        '+.local',
+        'geosite:cn',
+        'rule-set:cn domain',
+        'rule-set:legacy-provider',
+        'RULE-SET,legacy-provider,real-ip',
+        '  +.fixture.local  ',
+      ],
+    },
     tun: { 'exclude-process': [] },
   };
 }
@@ -710,12 +723,18 @@ function validateGeneral(output, record) {
   record.expectEqual(output.dns.listen, '0.0.0.0:1053', 'DNS listener is explicit for UI overwrite clients');
   record.expectEqual(output.dns['enhanced-mode'], 'fake-ip', 'DNS enhanced-mode defaults to fake-ip');
   record.expectEqual(output.dns['fake-ip-range'], '198.18.0.1/16', 'DNS fake-ip range is explicit');
+  record.expectEqual(output.dns['fake-ip-filter-mode'], 'blacklist', 'DNS fake-ip filter stays in blacklist mode');
   record.expectEqual(output.dns['prefer-h3'], false, 'DNS prefer-h3 stays disabled when respect-rules is enabled');
   record.expectEqual(output.dns['respect-rules'], true, 'DNS resolver connections respect route rules');
   record.expectEqual(output.dns['use-system-hosts'], false, 'DNS does not inherit system hosts');
   record.expectEqual(output.dns['cache-algorithm'], 'arc', 'DNS cache uses ARC');
   record.expect(Array.isArray(output.dns.nameserver) && output.dns.nameserver.length > 0, 'DNS nameserver fallback is nonempty');
-  record.expect(Array.isArray(output.dns['fake-ip-filter']) && output.dns['fake-ip-filter'].includes('+.rustdesk.com'), 'RustDesk domains receive real IP in fake-ip-filter');
+  const fakeIpFilter = Array.isArray(output.dns['fake-ip-filter']) ? output.dns['fake-ip-filter'] : [];
+  record.expect(fakeIpFilter.includes('+.rustdesk.com'), 'RustDesk domains receive real IP in fake-ip-filter');
+  record.expect(fakeIpFilter.includes('geosite:cn'), 'valid built-in geosite filter entries are preserved');
+  record.expect(fakeIpFilter.includes('+.fixture.local'), 'valid custom domain filter entries are trimmed and preserved');
+  record.expect(!fakeIpFilter.includes('rule-set:cn domain'), 'Issue #182 legacy rule-set entry is removed');
+  record.expect(!fakeIpFilter.some((entry) => /^(?:rule-set:|RULE-SET,)/i.test(String(entry))), 'source rule-set references are not carried into the rebuilt provider graph');
   for (const entry of ['+.msftconnecttest.com', '+.msftncsi.com', '+.in-addr.arpa', '+.ip6.arpa']) {
     record.expect(Array.isArray(output.dns['fake-ip-filter']) && output.dns['fake-ip-filter'].includes(entry), `split DNS fake-ip bypass includes ${entry}`);
   }

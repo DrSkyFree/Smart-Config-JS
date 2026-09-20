@@ -7,6 +7,15 @@
 
 ---
 
+## v6.0.13-dns.7 / v6.0.13-normal.8 (2026-09-21)
+
+- ★ FIX#182：修复 Clash Party v2.0.3 更新后 `dns.fake-ip-filter[3]` 报 `rule-set:cn domain` 不存在，导致 Smart 覆写确认后仍无法载入的问题。
+  - Smart / Normal 覆写显式收敛到 Mihomo `fake-ip-filter-mode: blacklist`，不再继承客户端缓存的 rule 模式。
+  - 清理订阅旧配置中的 `rule-set:*`、`RULE-SET,...` 等会随 `cleanupSubscription()` 失效的 provider 引用；保留合法域名通配与内置 `geosite:*` 项。
+  - 回归覆盖精确报告项 `rule-set:cn domain`，并确认 55 个策略组、151 条规则和 132 个融合 provider 不变。
+- ★ CROSS-CLIENT-AUDIT：同构修复同步到 FlClash；CMFA / Stash / OpenClash 等静态产物没有订阅运行时继承 seam，不改其既有 `blacklist` 配置。
+  - 契约记录：见 `AGENTS.md` §3.5.1 / §8.4；官方 Mihomo DNS 语法以 `fake-ip-filter-mode` 与单 token `rule-set:xxx` / `geosite:xxx` 为准。
+
 ## v6.0.13-dns.6 / v6.0.13-normal.7 (2026-09-03)
 
 - FIX-LINUXDO-CN-ROUTE：`linuxdo.org`、`connect.linuxdo.org` 与 `invite.linuxdo.org` 首命中固定为 `scki-fused-013-cn-site-domain → 🏠 国内网站`。

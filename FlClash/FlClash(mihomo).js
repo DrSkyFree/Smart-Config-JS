@@ -1,8 +1,8 @@
 // FlClash 覆写脚本 — 标准 Mihomo 内核动态分流版
-// 版本：v6.0.13-flclash.9 (2026-09-03)
+// 版本：v6.0.13-flclash.10 (2026-09-21)
 // 架构：22 url-test 区域组（11 全部 + 11 家宽）+ 33 业务策略组 + 132 融合 rule-providers / 151 rules
 // 规则源：rulesets/source/routing-graph.js v6.0.13（规则 100% 等价；区域组为 url-test — FlClash 内核为标准 Mihomo，不支持 smart + LightGBM）
-// v6.0.13-flclash.9：LINUX DO 大陆备用域名 linuxdo.org 前置归入国内网站；主站 linux.do 保持受限网站
+// v6.0.13-flclash.10：修复 #182：清理订阅遗留的 fake-ip-filter 规则模式/悬空 rule-set 引用
 // 适用：FlClash >= v0.8.85（覆盖脚本功能自该版本引入）；其他使用标准 Mihomo 内核的客户端
 // 变更历史：见 `FlClash/CHANGELOG.md`
 //
@@ -36,7 +36,7 @@
 //  版本常量
 // ================================================================
 
-const VERSION = 'v6.0.13-flclash.9'
+const VERSION = 'v6.0.13-flclash.10'
 
 // 受信任的本地订阅适配模式：off | policy | adaptive。
 // 不从机场订阅读取；三档均不会改变 55 组、规则或仓库 DNS 基线。
@@ -1063,7 +1063,11 @@ function overwriteGeneral(config, nodeDnsHints) {
   config.dns['fallback-filter'].geosite = ['gfw', 'geolocation-!cn']
   config.dns['fallback-filter'].ipcidr = ['240.0.0.0/4', '0.0.0.0/32', '127.0.0.0/8', '10.0.0.0/8', '192.168.0.0/16']
   if (!Array.isArray(config.dns['fallback-filter'].domain)) config.dns['fallback-filter'].domain = []
-  var currentFakeIpFilter = Array.isArray(config.dns['fake-ip-filter']) ? config.dns['fake-ip-filter'] : []
+  // FIX#182：本覆写使用传统 blacklist 域名列表。Clash Party / 订阅可能带入
+  // fake-ip-filter-mode: rule 或 `rule-set:cn domain` 这类旧项；同时 cleanupSubscription()
+  // 会重建 rule-providers，继续保留源 rule-set 会留下悬空引用并阻断新内核校验。
+  config.dns['fake-ip-filter-mode'] = 'blacklist'
+  var currentFakeIpFilter = sanitizeFakeIpFilterEntries(config.dns['fake-ip-filter'])
   config.dns['fake-ip-filter'] = uniqList(currentFakeIpFilter.concat([
     '+.lan',
     '+.local',
@@ -1143,6 +1147,20 @@ function uniqList(list) {
   return list.filter(function(item) {
     if (!item || seen[item]) return false
     seen[item] = true
+    return true
+  })
+}
+
+function sanitizeFakeIpFilterEntries(list) {
+  if (!Array.isArray(list)) return []
+  return list.map(function(item) {
+    return typeof item === 'string' ? item.trim() : ''
+  }).filter(function(item) {
+    if (!item || /\s/.test(item)) return false
+    // cleanupSubscription() replaces all source rule-providers with the fused set.
+    if (/^rule-set:/i.test(item)) return false
+    // Rule-mode entries are incompatible with the blacklist list we emit here.
+    if (/^(?:RULE-SET|GEOSITE|DOMAIN(?:-SUFFIX|-KEYWORD|-REGEX)?|IP-CIDR6?|MATCH),/i.test(item)) return false
     return true
   })
 }

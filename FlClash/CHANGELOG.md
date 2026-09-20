@@ -5,6 +5,14 @@
 
 ---
 
+## v6.0.13-flclash.10 (2026-09-21)
+
+- ★ FIX#182：同步修复 `dns.fake-ip-filter` 继承客户端旧 rule 模式和 `rule-set:cn domain` 悬空引用的问题。
+  - 显式输出 `fake-ip-filter-mode: blacklist`。
+  - 丢弃会随订阅 provider 清理而失效的 `rule-set:*` / `RULE-SET,...` 项，保留合法域名通配与内置 `geosite:*`。
+- VERIFY：与 Clash Party Smart / Normal 共用同一 Issue #182 回归夹具，保持 QuickJS/Dart 原地数组契约、55 个策略组、151 条规则和 132 个 provider 不变。
+- CONTRACT：见 `AGENTS.md` §3.5.1 / §8.4；官方 Mihomo DNS 语法以 `fake-ip-filter-mode` 与单 token `rule-set:xxx` / `geosite:xxx` 为准。
+
 ## v6.0.13-flclash.9 (2026-09-03)
 
 - FIX-LINUXDO-CN-ROUTE：与 Clash Party Normal 同步第 013 国内网站资产；`linuxdo.org` 及子域不再落入国外网站，`linux.do` 保持受限网站。

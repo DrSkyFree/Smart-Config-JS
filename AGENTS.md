@@ -545,6 +545,10 @@ done
 - **FIX#QX-07-P0**（PR #114）：QX `running_mode_trigger=filter,...` 误用（合法值仅 `direct`/`proxy`/`auto`/`follower`/`none`）
 - 反面教材：上一版 PR #114 CHANGELOG 误判 line 22 DNS 报错为 line 13 报错的级联效应——**不同语法陷阱独立报错，不要"猜"**
 
+| 运行时场景 | 订阅可能带入的错误输入 | 覆写后的正确处理 | 出处 |
+|---|---|---|---|
+| **Clash Party / FlClash JS `fake-ip-filter`** | `fake-ip-filter-mode: rule`、`rule-set:cn domain`、`RULE-SET,...` | 固定 `fake-ip-filter-mode: blacklist`；移除规则模式项和依赖订阅 `rule-providers` 的 `rule-set:*`，再合并合法域名/域集合项 | Issue #182 |
+
 #### 3.5.2 规则前缀与目标段
 
 | 产物 | 域名后缀 | IP CIDR | 端口 | 进程 | RULE-SET 引用 |
@@ -677,6 +681,8 @@ ruby -ryaml -e '
 node tools/validate-artifact-contracts.js --strict-ruby
 
 # 6) JS 覆写与 PROCESS-NAME 合同
+# FIX#182：上述命令包含 fake-ip-filter 规则模式 / 悬空 rule-set 引用回归检查
+rg -n "sanitizeFakeIpFilterEntries|fake-ip-filter-mode.*blacklist" "Clash Party/ClashParty(mihomo-smart).js" "Clash Party/ClashParty(mihomo).js" "FlClash/FlClash(mihomo).js"
 node tools/validate-js-overwrites.js
 node tools/validate-process-name-direct.js
 
@@ -760,6 +766,7 @@ node tools/validate-generated-remote-asset-size.js
 | Loon / Surge 使用 `DST-PORT` | v5.2.10-Loon.1 | 两端端口规则使用 `DEST-PORT` | 按 §3.5.2 使用 `DEST-PORT` |
 | 把 Surge `encrypted-dns-server=` 复制到 Loon / Shadowrocket | 潜在 | 三个平台的 DoH 字段不同 | 按 §3.5.1 分平台维护 |
 | 把 Clash `DOMAIN-SUFFIX,` 复制到 Passwall `.list` | 潜在 | Passwall 解析器不识别 Clash 前缀 | 使用 `domain:` / `full:` / `regexp:` / `geosite:` 等原生语法 |
+| 订阅 `fake-ip-filter` 遗留 `rule-set:cn domain` 或 `RULE-SET,...` | Issue #182 | 覆写重建 `rule-providers` 后，旧规则模式项会变成非法或悬空引用 | 按 §3.5.1 固定 `blacklist` 并清理源规则引用 |
 | 假设单平台 bug 无需联动 | v5.2.5 FIX#24~#26 | 实际可能存在多个语法不同但逻辑同构的漏洞 | 按 §1.5 对全部产物做同构审计 |
 
 ---

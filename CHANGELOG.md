@@ -6,6 +6,13 @@
 
 ---
 
+## v6.0.13-dns.7 / v6.0.13-normal.8 / v6.0.13-flclash.10 (2026-09-21)
+
+- FIX#182：修复 Clash Party v2.0.3 更新后 `dns.fake-ip-filter[3]` 的 `rule-set:cn domain` 悬空/非法引用导致覆写载入失败。
+- SYNC：Clash Party Smart、Normal 与 FlClash 统一输出 `fake-ip-filter-mode: blacklist`，清理会被覆写重建流程淘汰的源 provider 引用；静态 CMFA / Stash / OpenClash 产物无同构订阅继承路径，保持不变。
+- VERIFY：三端回归通过，策略组/规则/provider 数量保持 `55 / 151 / 132`。
+- CONTRACT：按 `AGENTS.md` §3.5.1 / §8.4 固化该运行时语法陷阱；官方 Mihomo DNS 语法以 `fake-ip-filter-mode` 与单 token `rule-set:xxx` / `geosite:xxx` 为准。
+
 ## v6.0.13 LINUX DO 大陆备用域名国内路由 (2026-09-03)
 
 - FIX-LINUXDO-CN-ROUTE：将 `linuxdo.org` 及全部子域加入前置的 `🏠 国内网站` 融合段，避免落入通用国际站点/IP 兜底。
