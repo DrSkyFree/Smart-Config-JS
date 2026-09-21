@@ -75,6 +75,12 @@ profile 的唯一源是 `tools/runtime/subscription-adapter-profiles.json`，发
 
 上表是 Node-DNS 的快速边界；完整的 14 个产品还应结合订阅输入、动态分组和可选 profile 一起判断，见[跨客户端能力矩阵](./client-capability-matrix.md)。矩阵把“客户端可导入订阅”和“本仓库拥有运行时订阅适配 hook”明确区分，避免把静态配置端误称为自动适配。
 
+### Clash Party v2.0.3+ 的内置 DNS 保护
+
+Clash Party v2.0.3 新增了订阅 DNS 覆写保护：主进程在执行覆写前检查原始订阅的 `proxy-server-nameserver`、`proxy-server-nameserver-policy`、`nameserver-policy`。如果用户此前打开了客户端内置 DNS 控制，客户端可能自动关闭 `controlDns` 并显示提示；这与本仓库 JS 的 Node-DNS 受限投影是两个不同层次。
+
+本仓库 Smart / Normal JS 会在随后重建仓库拥有的全局 DNS，并只把受信任的活动节点提示投影到精确 policy。因而使用本仓库时应关闭 Clash Party 内置 DNS 覆写，验证最终脚本输出即可；不要为了消除提示而删除脚本 DNS。只有在明确改由客户端管理 DNS 时，才应从原始订阅/聚合层移除上述字段并停用本仓库 DNS 基线。实现依据：[v2.0.3 发布说明](https://github.com/mihomo-party-org/clash-party/releases/tag/v2.0.3)、[DNS 保护源码](https://github.com/mihomo-party-org/clash-party/blob/v2.0.3/src/main/core/dnsOverrideGuard.ts)。
+
 ShellClash、ClashMi 等复用入口也不会因为复用了本仓库配置而自动获得该能力；只有它们提供等价的订阅覆写 hook 时，才可以单独实现 Adapter。
 
 ## 静态端的手动 overlay 示例

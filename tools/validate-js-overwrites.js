@@ -332,6 +332,16 @@ function makeFixtureConfig() {
         'RULE-SET,legacy-provider,real-ip',
         '  +.fixture.local  ',
       ],
+      // Regression fixture for Issue #183: Clash Party v2.0.3 inspects these
+      // raw-profile DNS fields before the JS override runs. The script must
+      // still replace them with the repository-owned DNS baseline afterward.
+      'proxy-server-nameserver': ['https://source-resolver.fixture.test/dns-query'],
+      'proxy-server-nameserver-policy': {
+        'node.fixture.test': ['https://source-resolver.fixture.test/dns-query'],
+      },
+      'nameserver-policy': {
+        '+.source.fixture.test': ['https://source-resolver.fixture.test/dns-query'],
+      },
     },
     tun: { 'exclude-process': [] },
   };
@@ -764,6 +774,21 @@ function validateGeneral(output, record) {
   record.expect(fpPreserved && fpPreserved['client-fingerprint'] === 'safari', 'existing client-fingerprint is preserved');
 }
 
+function validateClashPartyDnsGuardBoundary(target, logs, record) {
+  const logText = logs.join('\n');
+  if (target.id === 'smart' || target.id === 'normal') {
+    record.expect(
+      /Clash Party v2\.0\.3\+ DNS guard detected source fields=/.test(logText),
+      'Clash Party v2.0.3+ raw-profile DNS guard boundary is reported without exposing DNS values',
+    );
+    for (const secretLikeValue of ['source-resolver.fixture.test', 'node.fixture.test']) {
+      record.expect(!logText.includes(secretLikeValue), `Clash Party DNS guard diagnostic does not disclose ${secretLikeValue}`);
+    }
+  } else {
+    record.expect(!/Clash Party v2\.0\.3\+ DNS guard detected/.test(logText), 'FlClash does not claim the Clash Party-only DNS guard');
+  }
+}
+
 function validateNodeDnsHints(api, output, logs, record) {
   const nodePolicy = output.dns['proxy-server-nameserver-policy'] || {};
   const globalPolicy = output.dns['nameserver-policy'] || {};
@@ -1043,6 +1068,7 @@ function runTarget(target, options) {
     validateGroups(target, output, record);
     validateRulesAndProviders(output, record, target);
     validateGeneral(output, record);
+    validateClashPartyDnsGuardBoundary(target, logs, record);
     if (target.id === 'flclash') validateFlClashGeneral(output, record);
 
     const nodeDnsFixture = makeNodeDnsHintFixture();

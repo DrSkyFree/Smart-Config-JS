@@ -3,8 +3,8 @@
 > 目录简介：这里是 Mihomo Smart/Normal 覆写脚本的事实基线，面向 Clash Party、Clash Verge Rev、Mihomo Party 等桌面客户端。
 >
 > 覆写脚本：**两份二选一**，规则 100% 等价，仅 22 区域组（11 全部 + 11 家宽）的内核选路算法不同
-> - `ClashParty(mihomo-smart).js`（**v6.0.13-dns.7**，2026-09-21）— Smart 内核 + LightGBM ML 评估
-> - `ClashParty(mihomo).js`（**v6.0.13-normal.8**，2026-09-21）— 普通内核 url-test 延迟选路
+> - `ClashParty(mihomo-smart).js`（**v6.0.13-dns.8**，2026-09-21）— Smart 内核 + LightGBM ML 评估
+> - `ClashParty(mihomo).js`（**v6.0.13-normal.9**，2026-09-21）— 普通内核 url-test 延迟选路
 >
 > UI 补充配置：已整合到本文「四、粘贴 UI 补充配置」章节
 > 架构：**SUB-STORE 多机场融合** + 22 区域组（11 全部 + 11 家宽）+ 33 业务策略组 + **132 融合 rule-providers / 151 rules**（源 514 providers / 973 rules）
@@ -15,6 +15,8 @@
 > - 任何支持 Mihomo **JavaScript 覆写引擎**的客户端
 
 > 私有节点 DNS：覆写默认采用 `adaptive` 受限投影；可用 `off / policy / adaptive` 三档控制订阅 DNS 的投影深度，不会改变 55 组、规则或全局业务 DNS。若你另行粘贴 DNS UI 配置，请合并而不要覆盖这些字段。完整边界与静态端示例见 [私有节点 DNS 指南](../docs/private-node-dns.md)。
+
+> **Clash Party v2.0.3+ DNS 保护（Issue #183）**：客户端会在执行 JS 覆写前检查原始订阅是否包含 `proxy-server-nameserver`、`proxy-server-nameserver-policy` 或 `nameserver-policy`。如果客户端内置 DNS 控制处于开启状态，可能提示“检测到当前订阅包含自定义 DNS 配置，已自动关闭 DNS 覆写”。这只表示客户端的 `controlDns` 被保护逻辑关闭，不表示本脚本没有执行；本脚本随后仍会写入仓库 DNS 基线和受限节点 DNS。使用本仓库时请保持客户端内置 DNS 覆写关闭，不要把这条提示当作脚本加载失败。背景见 [Clash Party v2.0.3 发布说明](https://github.com/mihomo-party-org/clash-party/releases/tag/v2.0.3) 和 [DNS 覆写保护源码](https://github.com/mihomo-party-org/clash-party/blob/v2.0.3/src/main/core/dnsOverrideGuard.ts)。
 
 > 节点命名兼容：yun hk01 / yun us01 / yun jp01 / yun sg01 / yun tw01 这类小写 ISO 两位码加编号可正常归类。仅此形式放宽大小写，普通文本中的 us / in 不会被误判为地区。
 
@@ -404,6 +406,19 @@ sniffer:
 ### Q6：Smart 版与普通版可以切换吗？切换后订阅要不要重新导入？
 - **可以任意切换**，两份脚本输出的 `proxy-groups / rules / rule-providers` 完全等价，客户端下次刷新订阅时自动重新生成。
 - **不要同时启用两份脚本**（会互相覆盖，结果不可预期）。切换步骤：覆写列表里关掉旧的那份 → 勾选新的那份 → 刷新订阅。
+
+### Q7：升级 Clash Party v2.0.3+ 后，每次启动都提示“自动关闭 DNS 覆写”怎么办？
+
+这是客户端新增的**订阅 DNS 覆写保护**，不是本仓库脚本的 DNS 失败。v2.0.3 的主进程会先读取原始订阅中的三个受保护字段，再执行 JS 覆写；JS 无法在这一步之前改变客户端的 `controlDns` 判定。随后本仓库脚本仍会在 `main(config)` 中写入 `dns.enable`、`nameserver`、`proxy-server-nameserver`、`nameserver-policy`、`fake-ip-filter` 等仓库基线字段。
+
+按下面顺序处理：
+
+1. 保持本仓库 Smart / Normal JS 覆写启用；不要因为这条提示删除脚本。
+2. 让 Clash Party 的**内置 DNS 覆写 / controlDns 保持关闭**。本仓库脚本已经拥有最终 DNS 配置权，客户端 UI 再覆盖一次反而会产生竞争。
+3. 刷新订阅后查看最终配置或覆写日志，应能看到 `dns.enable: true`、仓库 DoH `nameserver` 和 `fake-ip-filter-mode: blacklist`；新版本脚本还会输出不含 DNS 地址值的 `Clash Party v2.0.3+ DNS guard detected source fields=...` 诊断行。
+4. 若必须使用客户端内置 DNS 控制，先在原始订阅/订阅聚合层删除上述三个字段，再由客户端单独管理 DNS；不要从本仓库 JS 中删除 DNS 基线。客户端的判断顺序见 [Clash Party v2.0.3 工厂流程](https://github.com/mihomo-party-org/clash-party/blob/v2.0.3/src/main/core/factory.ts)。
+
+如果关闭内置 DNS 覆写后最终配置仍没有上述字段，请在 Issue 中补充客户端完整版本、原始订阅 `dns:` 段（隐藏域名、IP、token）和覆写日志；不要直接公开订阅 URL 或节点密码。
 
 ---
 

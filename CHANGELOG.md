@@ -6,6 +6,13 @@
 
 ---
 
+## v6.0.13-dns.8 / v6.0.13-normal.9 (2026-09-21)
+
+- FIX#183：兼容 Clash Party v2.0.3+ 订阅 DNS 覆写保护；明确客户端内置 `controlDns` 自动关闭与本仓库 JS DNS 写入是两个不同层次。
+- SYNC：Smart / Normal JS 在原始订阅含受保护 DNS 字段时输出脱敏边界诊断，随后继续应用仓库 DNS 基线；FlClash 不引入 Clash Party 专属 guard。
+- VERIFY：新增受保护源 DNS 字段 fixture，确认 `nameserver`、`proxy-server-nameserver`、`nameserver-policy` 等最终字段仍由仓库脚本控制。
+- DOCS：同步 Clash Party 使用教程、根 DNS 指南、私有节点 DNS 指南及 `AGENTS.md` 陷阱/自检条目；详见 [Clash Party 变更日志](./Clash%20Party/CHANGELOG.md)。
+
 ## v6.0.13-dns.7 / v6.0.13-normal.8 / v6.0.13-flclash.10 (2026-09-21)
 
 - FIX#182：修复 Clash Party v2.0.3 更新后 `dns.fake-ip-filter[3]` 的 `rule-set:cn domain` 悬空/非法引用导致覆写载入失败。

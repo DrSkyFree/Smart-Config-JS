@@ -7,6 +7,15 @@
 
 ---
 
+## v6.0.13-dns.8 / v6.0.13-normal.9 (2026-09-21)
+
+- ★ FIX#183：兼容 Clash Party v2.0.3+ 的订阅 DNS 覆写保护边界。
+  - 根因：Clash Party 主进程会在执行 JS 覆写前检查原始订阅的 `proxy-server-nameserver`、`proxy-server-nameserver-policy`、`nameserver-policy`；若内置 `controlDns` 已开启，会先自动关闭客户端内置 DNS 控制。
+  - 处理：Smart / Normal JS 在发现这些源字段时只输出字段名诊断，不泄露 resolver、节点域名或 IP；随后仍完整写入仓库 DNS 基线和受限 Node-DNS 投影。
+  - 使用：本仓库拥有最终 DNS 配置权，Clash Party 内置 DNS 覆写应保持关闭；若必须由客户端接管，应在原始订阅/聚合层移除受保护字段。
+- VERIFY：`tools/validate-js-overwrites.js` 增加含三类受保护源字段的回归 fixture，确认输出 DNS 基线不被源订阅替换，并确认 FlClash 不误报 Clash Party 专属 guard。
+- DOCS：同步 `README.md`、`Clash Party/README.md`、`docs/private-node-dns.md` 与 `AGENTS.md` §3.5.4 / §5 / §8.4；官方依据为 [Clash Party v2.0.3 release](https://github.com/mihomo-party-org/clash-party/releases/tag/v2.0.3)、[`dnsOverrideGuard.ts`](https://github.com/mihomo-party-org/clash-party/blob/v2.0.3/src/main/core/dnsOverrideGuard.ts) 与 [`factory.ts`](https://github.com/mihomo-party-org/clash-party/blob/v2.0.3/src/main/core/factory.ts)。
+
 ## v6.0.13-dns.7 / v6.0.13-normal.8 (2026-09-21)
 
 - ★ FIX#182：修复 Clash Party v2.0.3 更新后 `dns.fake-ip-filter[3]` 报 `rule-set:cn domain` 不存在，导致 Smart 覆写确认后仍无法载入的问题。

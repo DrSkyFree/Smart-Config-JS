@@ -595,6 +595,7 @@ done
 | **Surge / Loon / QX** | 进程匹配 | iOS 进程命名空间不支持 `PROCESS-NAME`；Surge/Loon iOS 14+ 部分支持，QX 不支持 | 各官方 wiki |
 | **Mihomo `.mrs`** | 规则类型 | 只允许 `domain` / `ipcidr`；混合 classical 必须拆分；部分可转必须生成 `.mrs` + `-classical.yaml` 残余；全量不可转才保留原格式 | `tools/sync-mihomo-mrs-rule-providers.js` + MetaCubeX docs |
 | **Egern** | Mihomo `.mrs` | 官方文档未声明支持，禁止把 `.mrs` URL 直接写进 Egern；必须经 `tools/generate-egern-from-cmfa.js` 输出 Egern 原生 YAML | `Egern/REFERENCE-Egern.md` |
+| **Clash Party v2.0.3+** | 原始订阅 `dns` 中的 `proxy-server-nameserver` / `proxy-server-nameserver-policy` / `nameserver-policy` | 客户端会在 JS 覆写前保护性关闭内置 `controlDns`；不要把“自动关闭 DNS 覆写”误判为脚本未执行，仓库 JS 随后仍写入自身 DNS 基线 | Issue #183；Clash Party `dnsOverrideGuard.ts` / `factory.ts` |
 
 #### 3.5.5 添加新条目的工作流
 
@@ -682,7 +683,9 @@ node tools/validate-artifact-contracts.js --strict-ruby
 
 # 6) JS 覆写与 PROCESS-NAME 合同
 # FIX#182：上述命令包含 fake-ip-filter 规则模式 / 悬空 rule-set 引用回归检查
+# FIX#183：上述命令包含 Clash Party v2.0.3+ 原始订阅 DNS guard 边界与脱敏诊断回归检查
 rg -n "sanitizeFakeIpFilterEntries|fake-ip-filter-mode.*blacklist" "Clash Party/ClashParty(mihomo-smart).js" "Clash Party/ClashParty(mihomo).js" "FlClash/FlClash(mihomo).js"
+rg -n "logClashPartyDnsGuardBoundary|Clash Party v2\.0\.3\+ DNS guard" "Clash Party/ClashParty(mihomo-smart).js" "Clash Party/ClashParty(mihomo).js"
 node tools/validate-js-overwrites.js
 node tools/validate-process-name-direct.js
 
@@ -767,6 +770,7 @@ node tools/validate-generated-remote-asset-size.js
 | 把 Surge `encrypted-dns-server=` 复制到 Loon / Shadowrocket | 潜在 | 三个平台的 DoH 字段不同 | 按 §3.5.1 分平台维护 |
 | 把 Clash `DOMAIN-SUFFIX,` 复制到 Passwall `.list` | 潜在 | Passwall 解析器不识别 Clash 前缀 | 使用 `domain:` / `full:` / `regexp:` / `geosite:` 等原生语法 |
 | 订阅 `fake-ip-filter` 遗留 `rule-set:cn domain` 或 `RULE-SET,...` | Issue #182 | 覆写重建 `rule-providers` 后，旧规则模式项会变成非法或悬空引用 | 按 §3.5.1 固定 `blacklist` 并清理源规则引用 |
+| 把 Clash Party v2.0.3+ 自动关闭 DNS 覆写当作 JS 失效 | Issue #183 | 客户端主进程在 JS 覆写前检查原始订阅 DNS 字段并关闭内置 `controlDns`；本仓库脚本随后仍会写入自己的 DNS | 保持客户端内置 DNS 覆写关闭，检查最终配置和脱敏诊断日志；若必须由客户端接管，先在原始订阅/聚合层移除受保护字段 |
 | 假设单平台 bug 无需联动 | v5.2.5 FIX#24~#26 | 实际可能存在多个语法不同但逻辑同构的漏洞 | 按 §1.5 对全部产物做同构审计 |
 
 ---

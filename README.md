@@ -198,6 +198,8 @@ CMFA、Stash、Egern、Apple 配置、sing-box、v2rayN Xray、Passwall / Passwa
 
 **FlClash 用户：关联脚本后关闭应用层「DNS 覆写」和「追加系统 DNS」；Android 使用应用排除名单时关闭 VPN「系统代理」。** UI 二次覆盖与 VPN HTTP 代理可能破坏预期行为，完整设置和国内 APP 无法联网排查见 [FlClash 教程](./FlClash/README.md#应用层设置与-dns-所有权)。
 
+**Clash Party v2.0.3+ 用户：** 客户端新增订阅 DNS 覆写保护，会在 JS 执行前检查原始订阅的 `proxy-server-nameserver`、`proxy-server-nameserver-policy`、`nameserver-policy`。提示“已自动关闭 DNS 覆写”时，关闭的是客户端内置 `controlDns`，不是本仓库脚本；本仓库脚本随后仍写入自己的 DNS 基线。请保持客户端内置 DNS 覆写关闭，详见 [Clash Party 使用教程](./Clash%20Party/README.md)。
+
 ### 本仓库的 DNS 四层分工
 
 ```mermaid
