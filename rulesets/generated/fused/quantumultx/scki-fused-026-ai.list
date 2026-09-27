@@ -86,11 +86,13 @@ host-suffix, aicode.googleapis.com
 host-suffix, aida.googleapis.com
 host-suffix, aisandbox-pa.googleapis.com
 host-suffix, flow.google
+host-suffix, flow.google.com
 host-suffix, gemini.gstatic.com
 host-suffix, jules.google
 host-suffix, jules.google.com
 host-suffix, labs.google
 host-suffix, labs.google.com
+host-suffix, notebook.google
 host-suffix, notebook.google.com
 host-suffix, opal.google
 host-suffix, opal.google.com
