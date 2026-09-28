@@ -13,17 +13,17 @@ name: AI Issue Auto-Responder (Xiaomi MiMo)
 #   ┌──────────────────────┬───────────────┬──────────┬──────────┬──────────┐
 #   │ Issue 类别            │ 触发场景       │ 模型     │ Thinking │ 代码修改 │
 #   ├──────────────────────┼───────────────┼──────────┼──────────┼──────────┤
-#   │ question/faq/        │ 首次（labeled）│ mimo-v2.5 │ enabled  │ ❌       │
-#   │   help wanted        │ 第1次+ /ai-help│ mimo-v2.5-pro │ enabled  │ ❌       │
+#   │ question/faq/        │ 首次（labeled）│ mimo-v2.6-flash │ enabled  │ ❌       │
+#   │   help wanted        │ 第1次+ /ai-help│ mimo-v2.6-pro   │ enabled  │ ❌       │
 #   ├──────────────────────┼───────────────┼──────────┼──────────┼──────────┤
-#   │ bug                  │ 首次（labeled）│ mimo-v2.5 │ enabled  │ ✅       │
-#   │                      │ /ai-help 追问  │ mimo-v2.5-pro │ enabled  │ ✅       │
+#   │ bug                  │ 首次（labeled）│ mimo-v2.6-flash │ enabled  │ ✅       │
+#   │                      │ /ai-help 追问  │ mimo-v2.6-pro   │ enabled  │ ✅       │
 #   ├──────────────────────┼───────────────┼──────────┼──────────┼──────────┤
-#   │ enhancement          │ 首次（labeled）│ mimo-v2.5 │ enabled  │ ✅       │
-#   │                      │ /ai-help 追问  │ mimo-v2.5-pro │ enabled  │ ✅       │
+#   │ enhancement          │ 首次（labeled）│ mimo-v2.6-flash │ enabled  │ ✅       │
+#   │                      │ /ai-help 追问  │ mimo-v2.6-pro   │ enabled  │ ✅       │
 #   ├──────────────────────┼───────────────┼──────────┼──────────┼──────────┤
-#   │ documentation        │ 首次（labeled）│ mimo-v2.5 │ enabled  │ ✅ (文档) │
-#   │                      │ /ai-help 追问  │ mimo-v2.5-pro │ enabled  │ ✅ (文档) │
+#   │ documentation        │ 首次（labeled）│ mimo-v2.6-flash │ enabled  │ ✅ (文档) │
+#   │                      │ /ai-help 追问  │ mimo-v2.6-pro   │ enabled  │ ✅ (文档) │
 #   └──────────────────────┴───────────────┴──────────┴──────────┴──────────┘
 #
 #   代码修改模式：AI 输出结构化响应（<!-- AI_REPLY --> + <!-- AI_PATCH --> +
@@ -200,39 +200,39 @@ jobs:
           case "$CATEGORY" in
             question)
               if [ "$GITHUB_EVENT_NAME" = "issue_comment" ]; then
-                MODEL="mimo-v2.5-pro"
+                MODEL="mimo-v2.6-pro"
                 TIER_MARK="FOLLOWUP"
-                TIER_LABEL="问题追问（mimo-v2.5-pro 思考 · 只分析）"
+                TIER_LABEL="问题追问（mimo-v2.6-pro 思考 · 只分析）"
               else
-                MODEL="mimo-v2.5"
+                MODEL="mimo-v2.6-flash"
                 TIER_MARK="FIRST"
-                TIER_LABEL="问题/求助（首轮 · mimo-v2.5 思考 · 只分析）"
+                TIER_LABEL="问题/求助（首轮 · mimo-v2.6-flash 思考 · 只分析）"
               fi
               THINKING_TYPE="enabled"
               CODE_MOD="false"
               ;;
             bug)
               if [ "$GITHUB_EVENT_NAME" = "issue_comment" ]; then
-                MODEL="mimo-v2.5-pro"
+                MODEL="mimo-v2.6-pro"
                 TIER_MARK="FOLLOWUP"
-                TIER_LABEL="Bug 追问（mimo-v2.5-pro 思考 · 可改代码）"
+                TIER_LABEL="Bug 追问（mimo-v2.6-pro 思考 · 可改代码）"
               else
-                MODEL="mimo-v2.5"
+                MODEL="mimo-v2.6-flash"
                 TIER_MARK="FIRST"
-                TIER_LABEL="Bug 分析（首轮 · mimo-v2.5 思考 · 可改代码）"
+                TIER_LABEL="Bug 分析（首轮 · mimo-v2.6-flash 思考 · 可改代码）"
               fi
               THINKING_TYPE="enabled"
               CODE_MOD="true"
               ;;
             enhancement)
               if [ "$GITHUB_EVENT_NAME" = "issue_comment" ]; then
-                MODEL="mimo-v2.5-pro"
+                MODEL="mimo-v2.6-pro"
                 TIER_MARK="FOLLOWUP"
-                TIER_LABEL="功能建议追问（mimo-v2.5-pro 思考 · 可改代码）"
+                TIER_LABEL="功能建议追问（mimo-v2.6-pro 思考 · 可改代码）"
               else
-                MODEL="mimo-v2.5"
+                MODEL="mimo-v2.6-flash"
                 TIER_MARK="FIRST"
-                TIER_LABEL="功能建议（首轮 · mimo-v2.5 思考 · 可改代码）"
+                TIER_LABEL="功能建议（首轮 · mimo-v2.6-flash 思考 · 可改代码）"
               fi
               THINKING_TYPE="enabled"
               CODE_MOD="true"
@@ -241,13 +241,13 @@ jobs:
               THINKING_TYPE="enabled"
               CODE_MOD="true"
               if [ "$GITHUB_EVENT_NAME" = "issue_comment" ]; then
-                MODEL="mimo-v2.5-pro"
+                MODEL="mimo-v2.6-pro"
                 TIER_MARK="FOLLOWUP"
-                TIER_LABEL="文档追问（mimo-v2.5-pro 思考 · 可改文档）"
+                TIER_LABEL="文档追问（mimo-v2.6-pro 思考 · 可改文档）"
               else
-                MODEL="mimo-v2.5"
+                MODEL="mimo-v2.6-flash"
                 TIER_MARK="FIRST"
-                TIER_LABEL="文档反馈（首轮 · mimo-v2.5 思考 · 可改文档）"
+                TIER_LABEL="文档反馈（首轮 · mimo-v2.6-flash 思考 · 可改文档）"
               fi
               ;;
           esac
@@ -733,7 +733,7 @@ jobs:
         with:
           script: |
             const aiReply = process.env.AI_REPLY || '(AI 回复为空，请等维护者人工回复)';
-            const model   = process.env.AI_MODEL || 'mimo-v2.5';
+            const model   = process.env.AI_MODEL || 'mimo-v2.6-flash';
             const tier    = process.env.AI_TIER  || 'AI 自动回复';
             const codeMod = process.env.CODE_MOD || 'false';
             const prUrl   = process.env.PR_URL   || '';

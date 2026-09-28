@@ -801,15 +801,15 @@ PR 提交后会自动运行两个验证工作流：
 
 - **触发方式**：
   - Issue 打上 `question`/`bug`/`enhancement`/`documentation` 标签时自动触发
-  - 评论区输入 `/ai-help` 可升级为深度分析（`mimo-v2.5-pro` 模型）
+  - 评论区输入 `/ai-help` 可升级为深度分析（`mimo-v2.6-pro` 模型）
 - **分层调用策略**：
 
 | Issue 类别 | 首次触发 | /ai-help 追问 | 代码修改权限 |
 | --- | --- | --- | --- |
-| question/faq/help wanted | `mimo-v2.5` 思考 | `mimo-v2.5-pro` 思考 | ❌ |
-| bug | `mimo-v2.5` 思考 | `mimo-v2.5-pro` 思考 | ✅ |
-| enhancement | `mimo-v2.5` 思考 | `mimo-v2.5-pro` 思考 | ✅ |
-| documentation | `mimo-v2.5` 思考 | `mimo-v2.5-pro` 思考 | ✅ (文档) |
+| question/faq/help wanted | `mimo-v2.6-flash` 思考 | `mimo-v2.6-pro` 思考 | ❌ |
+| bug | `mimo-v2.6-flash` 思考 | `mimo-v2.6-pro` 思考 | ✅ |
+| enhancement | `mimo-v2.6-flash` 思考 | `mimo-v2.6-pro` 思考 | ✅ |
+| documentation | `mimo-v2.6-flash` 思考 | `mimo-v2.6-pro` 思考 | ✅ (文档) |
 
 - **代码修改模式**：AI 输出结构化响应（`<!-- AI_REPLY -->` + `<!-- AI_PATCH -->` + `<!-- AI_PR -->`），workflow 自动提取补丁、创建分支、提交并开 PR
 - **所需 Secrets / Variables**：`MIMO_API_KEY`（必填）、`TAVILY_API_KEY`（可选，联网搜索）；可选 Actions Variable `MIMO_BASE_URL` 覆盖标准端点 `https://api.xiaomimimo.com/v1`。Token Plan 的 key 不能与标准套餐混用，`MIMO_BASE_URL` 应填写控制台提供的完整 base URL。
