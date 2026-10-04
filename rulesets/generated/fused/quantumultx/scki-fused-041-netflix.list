@@ -22,6 +22,8 @@ host-suffix, netflixdnstest7.com
 host-suffix, netflixdnstest8.com
 host-suffix, netflixdnstest9.com
 host-suffix, netflixdnstest10.com
+ip-cidr, 9.187.0.0/16, no-resolve
+ip-cidr, 9.188.0.0/16, no-resolve
 ip-cidr, 23.246.0.0/18, no-resolve
 ip-cidr, 37.77.184.0/21, no-resolve
 ip-cidr, 45.57.0.0/17, no-resolve

@@ -2,6 +2,7 @@
 # Source id: geosite-google
 # Source URL: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml
 domain_set:
+  - "apps5.oingo.com"
   - "avail.googleflights.net"
   - "clickserve.cc-dt.com"
   - "dartsearch-cn.net"
